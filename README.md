@@ -3,8 +3,8 @@ Resilio Sync
 
 [![CircleCI](https://circleci.com/gh/oomathias/resilio-sync.svg?style=svg)](https://circleci.com/gh/oomathias/resilio-sync)
 [![Docker Repository on Quay](https://quay.io/repository/oomathias/resilio-sync/status "Docker Repository on Quay")](https://quay.io/repository/oomathias/resilio-sync)
-[![Docker Stars](https://img.shields.io/docker/stars/oomathias/resilio-sync.svg)](hub)
-[![Docker Pulls](https://img.shields.io/docker/pulls/oomathias/resilio-sync.svg)](hub)
+[![Docker Stars](https://img.shields.io/docker/stars/oomathias/resilio-sync.svg)](https://hub.docker.com/r/oomathias/resilio-sync/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/oomathias/resilio-sync.svg)](https://hub.docker.com/r/oomathias/resilio-sync/)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)   
 [![ImageLayers](https://imagelayers.io/badge/oomathias/resilio-sync:latest.svg)](https://imagelayers.io/?images=oomathias/resilio-sync:latest 'Get your own badge on imagelayers.io')
 
