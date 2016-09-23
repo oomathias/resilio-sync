@@ -1,7 +1,7 @@
 all: build
 
 build:
-	@docker build --tag=oomathias/gitlab-ci-multi-runner .
+	@docker build --tag=oomathias/resilio-sync .
 
 release: build
-	@docker build --tag=oomathias/gitlab-ci-multi-runner:$(shell cat VERSION) .
+	@docker build --tag=oomathias/resilio-sync:$(shell cat VERSION) .
