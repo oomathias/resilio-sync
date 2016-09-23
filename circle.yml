@@ -1,0 +1,42 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+  override:
+    - docker info
+    - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
+    - docker build --rm=false -t oomathias/resilio-sync:$CIRCLE_SHA1 .
+    - mkdir -p ~/docker; docker save oomathias/resilio-sync:$CIRCLE_SHA1 > ~/docker/image.tar
+
+test:
+  override:
+    - docker run -d -p 8888:8888 -p 55555 oomathias/resilio-sync:$CIRCLE_SHA1; sleep 10
+    - curl --retry 10 --retry-delay 5 -v http://localhost:8888
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - docker tag oomathias/resilio-sync:$CIRCLE_SHA1 oomathias/resilio-sync:master
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push oomathias/resilio-sync:master
+      - docker tag oomathias/resilio-sync:$CIRCLE_SHA1 quay.io/oomathias/resilio-sync:master
+      - docker login -e $DOCKER_EMAIL -u $QUAY_USER -p $QUAY_PASS quay.io
+      - docker push quay.io/oomathias/resilio-sync:master
+  releases:
+    tag: /[0-9]+(\.[0-9]+)*/
+    commands:
+      - docker tag oomathias/resilio-sync:$CIRCLE_SHA1 oomathias/resilio-sync:$CIRCLE_TAG
+      - docker tag oomathias/resilio-sync:$CIRCLE_SHA1 oomathias/resilio-sync:latest
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push oomathias/resilio-sync:$CIRCLE_TAG
+      - docker push oomathias/resilio-sync:latest
+
+      - docker tag oomathias/resilio-sync:$CIRCLE_SHA1 quay.io/oomathias/resilio-sync:$CIRCLE_TAG
+      - docker tag oomathias/resilio-sync:$CIRCLE_SHA1 quay.io/oomathias/resilio-sync:latest
+      - docker login -e $DOCKER_EMAIL -u $QUAY_USER -p $QUAY_PASS quay.io
+      - docker push quay.io/oomathias/resilio-sync:$CIRCLE_TAG
+      - docker push quay.io/oomathias/resilio-sync:latest

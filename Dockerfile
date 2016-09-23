@@ -11,8 +11,8 @@ RUN apk --no-cache --update add \
 # add dumb-init
 RUN curl -s https://api.github.com/repos/Yelp/dumb-init/releases \
   | grep browser_download_url | grep amd64 | head -n 1 | cut -d '"' -f 4 | \
-  wget -q -i - -O /usr/local/bin/dumb-init
-RUN chmod +x /usr/local/bin/dumb-init
+  wget -q -i - -O /usr/local/bin/dumb-init \
+  && chmod +x /usr/local/bin/dumb-init
 
 # add glibc
 RUN curl -s https://api.github.com/repos/sgerrand/alpine-pkg-glibc/releases \
@@ -28,9 +28,8 @@ RUN curl https://download-cdn.resilio.com/stable/linux-glibc-x64/resilio-sync_gl
   && chmod +x /usr/local/bin/rslsync
 
 ADD entrypoint.sh /
-RUN chmod +x /entrypoint.sh
-
 ADD sync.conf /etc/
+RUN chmod +x /entrypoint.sh
 
 VOLUME /mnt/sync
 
