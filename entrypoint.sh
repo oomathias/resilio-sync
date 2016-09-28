@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 mkdir -p /mnt/sync/folders
 mkdir -p /mnt/sync/config

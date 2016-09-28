@@ -40,3 +40,7 @@ deployment:
       - docker login -e $DOCKER_EMAIL -u $QUAY_USER -p $QUAY_PASS quay.io
       - docker push quay.io/oomathias/resilio-sync:$CIRCLE_TAG
       - docker push quay.io/oomathias/resilio-sync:latest
+
+notify:
+  webhooks:
+    - url: https://hooks.microbadger.com/images/oomathias/resilio-sync/xyHJGpX1C9-Ly1XXXIUuQ-QXV08=
