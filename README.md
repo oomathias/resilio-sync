@@ -2,11 +2,10 @@ Resilio Sync
 ===============
 
 [![CircleCI](https://circleci.com/gh/oomathias/resilio-sync.svg?style=svg)](https://circleci.com/gh/oomathias/resilio-sync)
-[![Docker Repository on Quay](https://quay.io/repository/oomathias/resilio-sync/status "Docker Repository on Quay")](https://quay.io/repository/oomathias/resilio-sync)
-[![Docker Stars](https://img.shields.io/docker/stars/oomathias/resilio-sync.svg)](https://hub.docker.com/r/oomathias/resilio-sync/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/oomathias/resilio-sync.svg)](https://hub.docker.com/r/oomathias/resilio-sync/)
-[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)   
-[![ImageLayers](https://imagelayers.io/badge/oomathias/resilio-sync:latest.svg)](https://imagelayers.io/?images=oomathias/resilio-sync:latest 'Get your own badge on imagelayers.io')
+[![](https://images.microbadger.com/badges/image/oomathias/resilio-sync.svg)](https://microbadger.com/images/oomathias/resilio-sync "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/oomathias/resilio-sync.svg)](https://microbadger.com/images/oomathias/resilio-sync "Get your own version badge on microbadger.com")
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)  
 
 Sync uses peer-to-peer technology to provide fast, private file sharing for teams and individuals. By skipping the cloud, transfers can be significantly faster because files take the shortest path between devices. Sync does not store your information on servers in the cloud, avoiding cloud privacy concerns.
 
