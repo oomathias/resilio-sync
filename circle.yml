@@ -8,7 +8,7 @@ dependencies:
   override:
     - docker info
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
-    - docker build --build-arg VCS_REF=$CIRCLE_SHA1 --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` -t oomathias/resilio-sync:$CIRCLE_SHA1 .
+    - docker build --rm=false --build-arg VCS_REF=$CIRCLE_SHA1 --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` -t oomathias/resilio-sync:$CIRCLE_SHA1 .
     - mkdir -p ~/docker; docker save oomathias/resilio-sync:$CIRCLE_SHA1 > ~/docker/image.tar
 
 test:
@@ -23,7 +23,7 @@ deployment:
       - docker tag oomathias/resilio-sync:$CIRCLE_SHA1 oomathias/resilio-sync:master
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push oomathias/resilio-sync:master
-      
+
       - docker tag oomathias/resilio-sync:$CIRCLE_SHA1 quay.io/oomathias/resilio-sync:master
       - docker login -e $DOCKER_EMAIL -u $QUAY_USER -p $QUAY_PASS quay.io
       - docker push quay.io/oomathias/resilio-sync:master
