@@ -5,7 +5,17 @@ Resilio Sync
 [![Docker Pulls](https://img.shields.io/docker/pulls/oomathias/resilio-sync.svg)](https://hub.docker.com/r/oomathias/resilio-sync/)
 [![](https://images.microbadger.com/badges/image/oomathias/resilio-sync.svg)](https://microbadger.com/images/oomathias/resilio-sync "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/version/oomathias/resilio-sync.svg)](https://microbadger.com/images/oomathias/resilio-sync "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/commit/oomathias/resilio-sync.svg)](https://microbadger.com/images/oomathias/resilio-sync "Get your own commit badge on microbadger.com")
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)  
+
+# Docker image content
+
+- Alpine based
+- dumb-init. Why? [Look at this Yelp article](https://engineeringblog.yelp.com/2016/01/dumb-init-an-init-for-docker.html)
+- glibc
+- resilio-sync
+
+# What's Resilio Sync?
 
 Sync uses peer-to-peer technology to provide fast, private file sharing for teams and individuals. By skipping the cloud, transfers can be significantly faster because files take the shortest path between devices. Sync does not store your information on servers in the cloud, avoiding cloud privacy concerns.
 

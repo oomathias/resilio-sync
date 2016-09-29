@@ -59,7 +59,8 @@ COPY entrypoint.sh /
 COPY sync.conf /etc/
 RUN chmod +x /entrypoint.sh
 
-VOLUME /mnt/sync
+EXPOSE 8888 55555
 
+VOLUME /mnt/sync
 ENTRYPOINT ["/usr/local/bin/dumb-init", "/entrypoint.sh"]
 CMD ["--log", "--config", "/etc/sync.conf"]
