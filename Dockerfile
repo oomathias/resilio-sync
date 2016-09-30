@@ -24,12 +24,12 @@ LABEL org.label-schema.name="resilio-sync" \
 # Install packages
 RUN \
   # tmp
-  echo ' ---> Initializing and Updating' \
+  echo " ---> Initializing and Updating" \
   && TMP_APK='curl tar ca-certificates' \
   && apk add --update --no-cache $TMP_APK \
 
   # dumb-init
-  && echo ' ---> Installing dumb-init' \
+  && echo " ---> Installing dumb-init v${DUMB_INIT_VERSION}" \
   && curl -LOsS https://github.com/Yelp/dumb-init/releases/download/v${DUMB_INIT_VERSION}/dumb-init_${DUMB_INIT_VERSION}_amd64 \
   && curl -LOsS https://github.com/Yelp/dumb-init/releases/download/v${DUMB_INIT_VERSION}/sha256sums \
   && fgrep "dumb-init_${DUMB_INIT_VERSION}_amd64$" sha256sums | sha256sum -c - \
@@ -38,19 +38,20 @@ RUN \
   && rm sha256sums \
 
   # glibc
-  && echo ' ---> Installing glibc' \
+  && echo " ---> Installing glibc v${GLIBC_VERSION}" \
   && curl -LOsS https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
   && curl -LsS -o /etc/apk/keys/sgerrand.rsa.pub https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/sgerrand.rsa.pub \
   && apk add glibc-${GLIBC_VERSION}.apk \
   && rm /etc/apk/keys/sgerrand.rsa.pub glibc-${GLIBC_VERSION}.apk \
 
   # resilio-sync
-  && echo ' ---> Installing resilio-sync' \
-  && curl -LsS https://download-cdn.resilio.com/stable/linux-glibc-x64/resilio-sync_glibc23_x64.tar.gz | tar xzf - -C /usr/local/bin rslsync \
+  && echo " ---> Installing resilio-sync v${RESILIO_VERSION}" \
+  && curl -LsS https://download-cdn.resilio.com/${RESILIO_VERSION}/linux-glibc-x64/resilio-sync_glibc23_x64.tar.gz | tar xzf - -C /usr/local/bin rslsync \
   && chmod +x /usr/local/bin/rslsync \
 
+
   # cleanup tmp
-  && echo ' ---> Cleaning' \
+  && echo " ---> Cleaning" \
   && apk del --no-cache $TMP_APK \
   && rm -rf /var/cache/apk/* \
   && rm -rf /tmp/*
